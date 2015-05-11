@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.DefaultComboBoxModel;
 
 public class NapraviTestGUI extends JFrame {
 
@@ -24,6 +25,7 @@ public class NapraviTestGUI extends JFrame {
 	private JTextField textField_1;
 	private JLabel lblBrojPitanjaPo;
 	private JButton btnNewButton;
+	private JButton btnNewButton_1;
 
 	/**
 	 * Launch the application.
@@ -34,6 +36,7 @@ public class NapraviTestGUI extends JFrame {
 				try {
 					NapraviTestGUI frame = new NapraviTestGUI();
 					frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -45,6 +48,7 @@ public class NapraviTestGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public NapraviTestGUI() {
+		setTitle("Novi test");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 493, 322);
@@ -61,10 +65,12 @@ public class NapraviTestGUI extends JFrame {
 		contentPane.add(getTextField_1());
 		contentPane.add(getLblBrojPitanjaPo());
 		contentPane.add(getBtnNewButton());
+		contentPane.add(getBtnNewButton_1());
 	}
 	private JComboBox getComboBox() {
 		if (comboBox == null) {
 			comboBox = new JComboBox();
+			comboBox.setModel(new DefaultComboBoxModel(new String[] {"Matematika", "SPA", "MTR"}));
 			comboBox.setBounds(10, 37, 118, 20);
 		}
 		return comboBox;
@@ -126,5 +132,12 @@ public class NapraviTestGUI extends JFrame {
 			btnNewButton.setBounds(367, 216, 102, 46);
 		}
 		return btnNewButton;
+	}
+	private JButton getBtnNewButton_1() {
+		if (btnNewButton_1 == null) {
+			btnNewButton_1 = new JButton("Odaberi predmet");
+			btnNewButton_1.setBounds(158, 36, 118, 23);
+		}
+		return btnNewButton_1;
 	}
 }
