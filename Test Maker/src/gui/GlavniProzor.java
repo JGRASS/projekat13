@@ -138,22 +138,22 @@ public class GlavniProzor extends JFrame {
 	}
 	private JButton getBtnNewButton() {
 		if (btnNewButton == null) {
-			btnNewButton = new JButton("New button");
-			btnNewButton.setBounds(10, 29, 89, 23);
+			btnNewButton = new JButton("Napravi test");
+			btnNewButton.setBounds(10, 29, 107, 23);
 		}
 		return btnNewButton;
 	}
 	private JButton getBtnNewButton_1() {
 		if (btnNewButton_1 == null) {
-			btnNewButton_1 = new JButton("New button");
-			btnNewButton_1.setBounds(10, 81, 89, 23);
+			btnNewButton_1 = new JButton("Dodaj");
+			btnNewButton_1.setBounds(10, 81, 107, 23);
 		}
 		return btnNewButton_1;
 	}
 	private JButton getBtnNewButton_2() {
 		if (btnNewButton_2 == null) {
-			btnNewButton_2 = new JButton("New button");
-			btnNewButton_2.setBounds(10, 143, 89, 23);
+			btnNewButton_2 = new JButton("Izlaz");
+			btnNewButton_2.setBounds(10, 143, 107, 23);
 		}
 		return btnNewButton_2;
 	}
