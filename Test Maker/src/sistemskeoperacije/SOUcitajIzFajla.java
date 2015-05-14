@@ -13,7 +13,7 @@ public class SOUcitajIzFajla {
 
 	public static void ucitajIzFajla(String naziv, LinkedList<Pitanja> listaPitanja){
 		try {
-			BufferedReader in = new BufferedReader(new FileReader(naziv));
+			BufferedReader in = new BufferedReader(new FileReader(naziv+".txt"));
 			listaPitanja.clear();
 			
 			while(true){

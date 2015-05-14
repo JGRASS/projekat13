@@ -17,8 +17,24 @@ import java.awt.event.ActionEvent;
 public class DodajPredmet extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textFieldPredmet;
-	private JTextArea textAreaPitanja;
+	private JTextField textField;
+	private JTextArea textArea;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					DodajPredmet frame = new DodajPredmet();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the frame.
@@ -30,36 +46,38 @@ public class DodajPredmet extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JLabel lblNazizPredmeta = new JLabel("Naziz predmeta");
-		lblNazizPredmeta.setBounds(26, 22, 92, 14);
-		contentPane.add(lblNazizPredmeta);
-		
-		textFieldPredmet = new JTextField();
-		textFieldPredmet.setBounds(26, 47, 86, 20);
-		contentPane.add(textFieldPredmet);
-		textFieldPredmet.setColumns(10);
-		
-		JLabel lblPitanja = new JLabel("Pitanja:");
-		lblPitanja.setBounds(26, 78, 58, 14);
+
+		JLabel lblPredmet = new JLabel("Predmet");
+		lblPredmet.setBounds(26, 30, 46, 14);
+		contentPane.add(lblPredmet);
+
+		textField = new JTextField();
+		textField.setBounds(26, 55, 86, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
+
+		JLabel lblPitanja = new JLabel("Pitanja");
+		lblPitanja.setBounds(26, 86, 46, 14);
 		contentPane.add(lblPitanja);
-		
+
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(26, 98, 201, 103);
+		scrollPane.setBounds(26, 106, 198, 108);
 		contentPane.add(scrollPane);
-		
-		textAreaPitanja = new JTextArea();
-		scrollPane.setViewportView(textAreaPitanja);
-		
+
+		textArea = new JTextArea();
+		scrollPane.setViewportView(textArea);
+
 		JButton btnDodaj = new JButton("Dodaj");
 		btnDodaj.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				GUIKontroler.upisiPredmet(textFieldPredmet.getText());
-				GUIKontroler.ubaciPitanje(textFieldPredmet.getText(), textAreaPitanja.getText());
+				GUIKontroler.upisiPredmet(textField.getText());
+				GUIKontroler.ubaciPitanje(textField.getText(),
+						textArea.getText());
 				dispose();
 			}
 		});
-		btnDodaj.setBounds(277, 147, 114, 54);
+		btnDodaj.setBounds(270, 150, 128, 64);
 		contentPane.add(btnDodaj);
 	}
+
 }

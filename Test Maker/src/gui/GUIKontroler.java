@@ -55,7 +55,7 @@ public class GUIKontroler {
 	}
 
 	public static void ucitajSvaPitanja(String naziv, JTextArea textArea) {
-		testMaker.ucitajIzFajla(naziv + ".txt");
+		testMaker.ucitajIzFajla(naziv);
 		
 		for (int i = 0; i < testMaker.getListaPitanja().size(); i++) {
 			textArea.append(testMaker.getListaPitanja().get(i) + "\n");
