@@ -109,18 +109,33 @@ public class GlavniProzor extends JFrame {
 	private JMenuItem getMntmPredmet() {
 		if (mntmPredmet == null) {
 			mntmPredmet = new JMenuItem("Predmet");
+			mntmPredmet.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+				new DodajPredmet().setVisible(true);
+				}
+			});
 		}
 		return mntmPredmet;
 	}
 	private JMenuItem getMntmPitanja() {
 		if (mntmPitanja == null) {
 			mntmPitanja = new JMenuItem("Pitanja");
+			mntmPitanja.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+				new DodajPitanjeGUI().setVisible(true);
+				}
+			});
 		}
 		return mntmPitanja;
 	}
 	private JMenuItem getMntmIzlaz() {
 		if (mntmIzlaz == null) {
 			mntmIzlaz = new JMenuItem("Izlaz");
+			mntmIzlaz.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+				GUIKontroler.ugasiAplikaciju();
+				}
+			});
 			mntmIzlaz.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, InputEvent.ALT_MASK));
 		}
 		return mntmIzlaz;

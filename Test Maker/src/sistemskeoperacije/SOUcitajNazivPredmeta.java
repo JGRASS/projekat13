@@ -11,9 +11,9 @@ public class SOUcitajNazivPredmeta {
 	public static void upisiPredmet(String naziv){
 		
 		try {
-			PrintWriter out=new PrintWriter(new BufferedWriter(new FileWriter("Predmet.txt")));
+			PrintWriter out=new PrintWriter(new BufferedWriter(new FileWriter("Predmet.txt", true)));
 			
-			out.println(naziv);
+			out.print("\n"+naziv);
 			out.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

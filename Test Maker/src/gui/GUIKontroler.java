@@ -72,4 +72,8 @@ public class GUIKontroler {
 	public static void ubaciPitanje(String naziv, String pitanje) {
 		testMaker.ubaciPitanje(naziv, pitanje);
 	}
+
+	public static void upisiPredmet(String naziv) {
+		testMaker.upisiPredmet(naziv);		
+	}
 }

@@ -54,6 +54,7 @@ public class DodajPredmet extends JFrame {
 		JButton btnDodaj = new JButton("Dodaj");
 		btnDodaj.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				GUIKontroler.upisiPredmet(textFieldPredmet.getText());
 				GUIKontroler.ubaciPitanje(textFieldPredmet.getText(), textAreaPitanja.getText());
 				dispose();
 			}

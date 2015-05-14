@@ -13,14 +13,13 @@ public class SOUbaciNovoPitanje {
 	public static void upisiPitanje(String naziv,String pitanje){
 		
 		try {
-			PrintWriter out=new PrintWriter(new BufferedWriter(new FileWriter(naziv+".txt")));
+			PrintWriter out=new PrintWriter(new BufferedWriter(new FileWriter(naziv+".txt", true)));
 			
-			out.append(pitanje);
+			out.print("\n"+pitanje);
 			out.close();
 		} 
 		
 		catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

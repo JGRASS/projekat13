@@ -13,6 +13,9 @@ public class SONapraviTest {
 			int brojGrupa, LinkedList<Pitanja> listaPitanja, JTextArea textArea) {
 
 		for (int j = 0; j < brojGrupa; j++) {
+			int grupa= j+1;
+			textArea.append("Grupa: "+ grupa+"\n");
+			
 			LinkedList<Pitanja> pomocnaLista = new LinkedList<Pitanja>();
 			pomocnaLista.addAll(listaPitanja);
 
@@ -24,6 +27,7 @@ public class SONapraviTest {
 				pomocnaLista.remove(a);
 			}
 			
+			textArea.append("\n");
 		}
 
 	}
