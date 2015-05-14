@@ -1,24 +1,56 @@
 package logicka_kontrola;
 
+/**
+ * Klasa predstavlja pitanje i odgovor iz odgovarajuceg predmeta
+ *
+ * @author Projekat13
+ *
+ */
 public class Pitanja {
 
+	/**
+	 * Tekst pitanja na koje je potrebno dati odgovor
+	 */
 	private String pitanje;
+	
+	/**
+	 * Tekst odgovora na pitanje
+	 */
 	private String odgovor;
 
+	
+	/**
+	 * Metoda vraca tekst pitanja
+	 * @return pitanje
+	 */
 	public String getPitanje() {
 		return pitanje;
 	}
 
+	/**
+	 * Metoda postavlja vrednost atributa pitanje na unetu vrednost
+	 * @param pitanje
+	 * @throws java.lang.RuntimeException ako je uneto null ili prazan String
+	 */
 	public void setPitanje(String pitanje) {
 		if (pitanje == null || pitanje.isEmpty())
 			throw new RuntimeException("Nije uneto pitanje");
 		this.pitanje = pitanje;
 	}
 
+	/**
+	 * Metoda vraca test odgovora na pitanja
+	 * @return odgovor
+	 */
 	public String getOdgovor() {
 		return odgovor;
 	}
 
+	
+	/**
+	 * Metoda postavlja vrednost atributa odgovor ba unetu vrednost
+	 * @param odgovor
+	 */
 	public void setOdgovor(String odgovor) {
 		this.odgovor = odgovor;
 	}
