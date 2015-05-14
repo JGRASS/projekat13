@@ -12,6 +12,16 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
+import sistemskeoperacije.SOIspisiNazivePredmeta;
+import sistemskeoperacije.SOUbaciNovoPitanje;
+import sistemskeoperacije.SOUcitajIzFajla;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.util.LinkedList;
+
+import logicka_kontrola.Pitanja;
+
 public class DodajPitanjeGUI extends JFrame {
 
 	private JPanel contentPane;
@@ -22,7 +32,11 @@ public class DodajPitanjeGUI extends JFrame {
 	private JTextField textField;
 	private JLabel lblNovoPitanje;
 	private JButton btnUbaciPitanje;
+	private JButton btnOdaberiPredmet;
 
+	
+	private LinkedList<String> listaPredmeta;
+	private LinkedList<Pitanja> listaPitanja;
 	/**
 	 * Launch the application.
 	 */
@@ -58,6 +72,12 @@ public class DodajPitanjeGUI extends JFrame {
 		contentPane.add(getTextField());
 		contentPane.add(getLblNovoPitanje());
 		contentPane.add(getBtnUbaciPitanje());
+		contentPane.add(getBtnOdaberiPredmet());
+		
+		listaPitanja=new LinkedList<Pitanja>();
+		listaPredmeta=new LinkedList<String>();
+		SOIspisiNazivePredmeta.prikaziPredmete(listaPredmeta);
+		comboBox.setSelectedItem(listaPredmeta);
 	}
 	private JComboBox getComboBox() {
 		if (comboBox == null) {
@@ -105,8 +125,27 @@ public class DodajPitanjeGUI extends JFrame {
 	private JButton getBtnUbaciPitanje() {
 		if (btnUbaciPitanje == null) {
 			btnUbaciPitanje = new JButton("Ubaci pitanje");
+			btnUbaciPitanje.addActionListener(new BtnUbaciPitanjeActionListener());
 			btnUbaciPitanje.setBounds(277, 162, 157, 45);
 		}
 		return btnUbaciPitanje;
+	}
+	private class BtnUbaciPitanjeActionListener implements ActionListener {
+		public void actionPerformed(final ActionEvent arg0) {
+			SOUbaciNovoPitanje.upisiPitanje(comboBox.getSelectedItem().toString(), textField.getText());
+		}
+	}
+	private class BtnOdaberiPredmetActionListener implements ActionListener {
+		public void actionPerformed(final ActionEvent arg0) {
+			SOUcitajIzFajla.ucitajIzFajla(comboBox.getSelectedItem().toString(), listaPitanja);
+		}
+	}
+	private JButton getBtnOdaberiPredmet() {
+		if (btnOdaberiPredmet == null) {
+			btnOdaberiPredmet = new JButton("Odaberi predmet");
+			btnOdaberiPredmet.addActionListener(new BtnOdaberiPredmetActionListener());
+			btnOdaberiPredmet.setBounds(148, 33, 119, 23);
+		}
+		return btnOdaberiPredmet;
 	}
 }
