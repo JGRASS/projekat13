@@ -162,12 +162,12 @@ public class NapraviTestGUI extends JFrame {
 		public void actionPerformed(final ActionEvent arg0) {
 			GotovTestGUI frame=new GotovTestGUI();
 			frame.setVisible(true);
-			SONapraviTest.napraviTest(Integer.parseInt(brojPitanjaTxt.toString()), Integer.parseInt(brojGrupaTxt.toString()), pitanja, GotovTestGUI.textArea);
+			SONapraviTest.napraviTest(Integer.parseInt(brojPitanjaTxt.getText()), Integer.parseInt(brojGrupaTxt.getText()), pitanja, GotovTestGUI.textArea);
 		}
 	}
 	private class BtnNewButton_1ActionListener implements ActionListener {
 		public void actionPerformed(final ActionEvent arg0) {
-			SOUcitajIzFajla.ucitajIzFajla(comboBox.toString(), pitanja);
+			SOUcitajIzFajla.ucitajIzFajla(comboBox.getSelectedItem().toString(), pitanja);
 			
 				list.setListData(pitanja.toArray());
 			
