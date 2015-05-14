@@ -17,33 +17,19 @@ public class GotovTestGUI extends JFrame {
 	public static JTextArea textArea;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GotovTestGUI frame = new GotovTestGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
-	public GotovTestGUI() {
+	public GotovTestGUI(int brojGrupa, int brojPitanja, String naziv) {
 		setTitle("Test");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 496, 327);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		contentPane.add(getScrollPane(), BorderLayout.CENTER);
+		
+		GUIKontroler.napraviTest(brojGrupa, brojPitanja, naziv, textArea);
 	}
 
 	private JScrollPane getScrollPane() {

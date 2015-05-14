@@ -23,13 +23,14 @@ import java.util.LinkedList;
 
 import logicka_kontrola.Pitanja;
 import logicka_kontrola.TestMaker;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 public class NapraviTestGUI extends JFrame {
 
 	private JPanel contentPane;
-	private JComboBox comboBox;
+	private static JComboBox comboBox;
 	private JLabel lblPredmet;
-	private JList list;
 	private JTextField brojGrupaTxt;
 	private JLabel lblPitanja;
 	private JLabel lblBrojGrupa;
@@ -37,28 +38,10 @@ public class NapraviTestGUI extends JFrame {
 	private JLabel lblBrojPitanjaPo;
 	private JButton btnNewButton;
 	private JButton btnNewButton_1;
-	
-	//klase na logickom nivou
-	private LinkedList<Pitanja> pitanja;
-	private LinkedList<String> listaPredmeta;
+	private JTextArea textArea;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					NapraviTestGUI frame = new NapraviTestGUI();
-					frame.setVisible(true);
-					
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	// klase na logickom nivou
+	private LinkedList<Pitanja> pitanja;
 
 	/**
 	 * Create the frame.
@@ -66,7 +49,7 @@ public class NapraviTestGUI extends JFrame {
 	public NapraviTestGUI() {
 		setTitle("Novi test");
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 493, 322);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -74,7 +57,6 @@ public class NapraviTestGUI extends JFrame {
 		contentPane.setLayout(null);
 		contentPane.add(getComboBox());
 		contentPane.add(getLblPredmet());
-		contentPane.add(getList());
 		contentPane.add(getBrojGrupaTxt());
 		contentPane.add(getLblPitanja());
 		contentPane.add(getLblBrojGrupa());
@@ -82,13 +64,19 @@ public class NapraviTestGUI extends JFrame {
 		contentPane.add(getLblBrojPitanjaPo());
 		contentPane.add(getBtnNewButton());
 		contentPane.add(getBtnNewButton_1());
-		
-		pitanja=new LinkedList<Pitanja>();
-		listaPredmeta=new LinkedList<String>();
-		
-		SOIspisiNazivePredmeta.prikaziPredmete(listaPredmeta);
-		comboBox.setSelectedItem(listaPredmeta);
+
+		GUIKontroler.ucitajPredmete(comboBox);
+
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 109, 326, 153);
+		contentPane.add(scrollPane);
+
+		textArea = new JTextArea();
+		scrollPane.setViewportView(textArea);
+		pitanja = new LinkedList<Pitanja>();
+
 	}
+
 	private JComboBox getComboBox() {
 		if (comboBox == null) {
 			comboBox = new JComboBox();
@@ -96,6 +84,7 @@ public class NapraviTestGUI extends JFrame {
 		}
 		return comboBox;
 	}
+
 	private JLabel getLblPredmet() {
 		if (lblPredmet == null) {
 			lblPredmet = new JLabel("Predmet");
@@ -103,13 +92,7 @@ public class NapraviTestGUI extends JFrame {
 		}
 		return lblPredmet;
 	}
-	private JList getList() {
-		if (list == null) {
-			list = new JList();
-			list.setBounds(10, 111, 324, 151);
-		}
-		return list;
-	}
+
 	private JTextField getBrojGrupaTxt() {
 		if (brojGrupaTxt == null) {
 			brojGrupaTxt = new JTextField();
@@ -118,6 +101,7 @@ public class NapraviTestGUI extends JFrame {
 		}
 		return brojGrupaTxt;
 	}
+
 	private JLabel getLblPitanja() {
 		if (lblPitanja == null) {
 			lblPitanja = new JLabel("Pitanja");
@@ -125,6 +109,7 @@ public class NapraviTestGUI extends JFrame {
 		}
 		return lblPitanja;
 	}
+
 	private JLabel getLblBrojGrupa() {
 		if (lblBrojGrupa == null) {
 			lblBrojGrupa = new JLabel("Broj grupa");
@@ -132,6 +117,7 @@ public class NapraviTestGUI extends JFrame {
 		}
 		return lblBrojGrupa;
 	}
+
 	private JTextField getBrojPitanjaTxt() {
 		if (brojPitanjaTxt == null) {
 			brojPitanjaTxt = new JTextField();
@@ -140,6 +126,7 @@ public class NapraviTestGUI extends JFrame {
 		}
 		return brojPitanjaTxt;
 	}
+
 	private JLabel getLblBrojPitanjaPo() {
 		if (lblBrojPitanjaPo == null) {
 			lblBrojPitanjaPo = new JLabel("Broj pitanja po grupi");
@@ -147,40 +134,42 @@ public class NapraviTestGUI extends JFrame {
 		}
 		return lblBrojPitanjaPo;
 	}
+
 	private JButton getBtnNewButton() {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("Napravi test");
 			btnNewButton.addActionListener(new BtnNewButtonActionListener());
-			
+
 			btnNewButton.setBounds(367, 216, 102, 46);
 		}
 		return btnNewButton;
 	}
+
 	private JButton getBtnNewButton_1() {
 		if (btnNewButton_1 == null) {
 			btnNewButton_1 = new JButton("Odaberi predmet");
-			btnNewButton_1.addActionListener(new BtnNewButton_1ActionListener());
+			btnNewButton_1
+					.addActionListener(new BtnNewButton_1ActionListener());
 			btnNewButton_1.setBounds(158, 36, 118, 23);
 		}
 		return btnNewButton_1;
 	}
-	
+
 	private class BtnNewButtonActionListener implements ActionListener {
 		public void actionPerformed(final ActionEvent arg0) {
-			GotovTestGUI frame=new GotovTestGUI();
+			GotovTestGUI frame = new GotovTestGUI(Integer.parseInt(brojGrupaTxt
+					.getText()), Integer.parseInt(brojPitanjaTxt.getText()),
+					comboBox.getSelectedItem().toString());
 			frame.setVisible(true);
-			SONapraviTest.napraviTest(Integer.parseInt(brojPitanjaTxt.getText()), Integer.parseInt(brojGrupaTxt.getText()), pitanja, GotovTestGUI.textArea);
+			dispose();
 		}
 	}
+
 	private class BtnNewButton_1ActionListener implements ActionListener {
 		public void actionPerformed(final ActionEvent arg0) {
-			SOUcitajIzFajla.ucitajIzFajla(comboBox.getSelectedItem().toString(), pitanja);
-			
-				list.setListData(pitanja.toArray());
-			
-			
+			GUIKontroler.ucitajSvaPitanja(
+					comboBox.getSelectedItem().toString(), textArea);
 		}
 
-		
 	}
 }

@@ -26,32 +26,10 @@ public class DodajPitanjeGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JComboBox comboBox;
-	private JList list;
 	private JLabel lblPredmet;
-	private JLabel lblSpisakPitanja;
 	private JTextField textField;
 	private JLabel lblNovoPitanje;
 	private JButton btnUbaciPitanje;
-	private JButton btnOdaberiPredmet;
-
-	
-	private LinkedList<String> listaPredmeta;
-	private LinkedList<Pitanja> listaPitanja;
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					DodajPitanjeGUI frame = new DodajPitanjeGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -59,25 +37,19 @@ public class DodajPitanjeGUI extends JFrame {
 	public DodajPitanjeGUI() {
 		setResizable(false);
 		setTitle("Dodaj Pitanje");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		contentPane.add(getComboBox());
-		contentPane.add(getList());
 		contentPane.add(getLblPredmet());
-		contentPane.add(getLblSpisakPitanja());
 		contentPane.add(getTextField());
 		contentPane.add(getLblNovoPitanje());
 		contentPane.add(getBtnUbaciPitanje());
-		contentPane.add(getBtnOdaberiPredmet());
 		
-		listaPitanja=new LinkedList<Pitanja>();
-		listaPredmeta=new LinkedList<String>();
-		SOIspisiNazivePredmeta.prikaziPredmete(listaPredmeta);
-		comboBox.setSelectedItem(listaPredmeta);
+		GUIKontroler.ucitajPredmete(comboBox);
 	}
 	private JComboBox getComboBox() {
 		if (comboBox == null) {
@@ -86,13 +58,6 @@ public class DodajPitanjeGUI extends JFrame {
 		}
 		return comboBox;
 	}
-	private JList getList() {
-		if (list == null) {
-			list = new JList();
-			list.setBounds(10, 91, 257, 138);
-		}
-		return list;
-	}
 	private JLabel getLblPredmet() {
 		if (lblPredmet == null) {
 			lblPredmet = new JLabel("Predmet");
@@ -100,17 +65,10 @@ public class DodajPitanjeGUI extends JFrame {
 		}
 		return lblPredmet;
 	}
-	private JLabel getLblSpisakPitanja() {
-		if (lblSpisakPitanja == null) {
-			lblSpisakPitanja = new JLabel("Spisak pitanja");
-			lblSpisakPitanja.setBounds(10, 65, 78, 14);
-		}
-		return lblSpisakPitanja;
-	}
 	private JTextField getTextField() {
 		if (textField == null) {
 			textField = new JTextField();
-			textField.setBounds(277, 89, 157, 45);
+			textField.setBounds(10, 87, 385, 65);
 			textField.setColumns(10);
 		}
 		return textField;
@@ -118,7 +76,7 @@ public class DodajPitanjeGUI extends JFrame {
 	private JLabel getLblNovoPitanje() {
 		if (lblNovoPitanje == null) {
 			lblNovoPitanje = new JLabel("Novo pitanje");
-			lblNovoPitanje.setBounds(277, 65, 70, 14);
+			lblNovoPitanje.setBounds(10, 62, 70, 14);
 		}
 		return lblNovoPitanje;
 	}
@@ -126,26 +84,14 @@ public class DodajPitanjeGUI extends JFrame {
 		if (btnUbaciPitanje == null) {
 			btnUbaciPitanje = new JButton("Ubaci pitanje");
 			btnUbaciPitanje.addActionListener(new BtnUbaciPitanjeActionListener());
-			btnUbaciPitanje.setBounds(277, 162, 157, 45);
+			btnUbaciPitanje.setBounds(10, 163, 157, 45);
 		}
 		return btnUbaciPitanje;
 	}
 	private class BtnUbaciPitanjeActionListener implements ActionListener {
 		public void actionPerformed(final ActionEvent arg0) {
-			SOUbaciNovoPitanje.upisiPitanje(comboBox.getSelectedItem().toString(), textField.getText());
+			GUIKontroler.ubaciPitanje(comboBox.getSelectedItem().toString(), textField.getText());
+			dispose();
 		}
-	}
-	private class BtnOdaberiPredmetActionListener implements ActionListener {
-		public void actionPerformed(final ActionEvent arg0) {
-			SOUcitajIzFajla.ucitajIzFajla(comboBox.getSelectedItem().toString(), listaPitanja);
-		}
-	}
-	private JButton getBtnOdaberiPredmet() {
-		if (btnOdaberiPredmet == null) {
-			btnOdaberiPredmet = new JButton("Odaberi predmet");
-			btnOdaberiPredmet.addActionListener(new BtnOdaberiPredmetActionListener());
-			btnOdaberiPredmet.setBounds(148, 33, 119, 23);
-		}
-		return btnOdaberiPredmet;
 	}
 }

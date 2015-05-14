@@ -15,7 +15,7 @@ public class SOUbaciNovoPitanje {
 		try {
 			PrintWriter out=new PrintWriter(new BufferedWriter(new FileWriter(naziv+".txt")));
 			
-			out.write(pitanje);
+			out.append(pitanje);
 			out.close();
 		} 
 		

@@ -13,6 +13,15 @@ import sistemskeoperacije.SOUcitajNazivPredmeta;
 public class TestMaker {
 
 	LinkedList<Pitanja> listaPitanja = new LinkedList<Pitanja>();
+	LinkedList<String> listaPredmeta = new LinkedList<String>();
+
+	public LinkedList<Pitanja> getListaPitanja() {
+		return listaPitanja;
+	}
+
+	public LinkedList<String> getListaPredmeta() {
+		return listaPredmeta;
+	}
 
 	public void ucitajIzFajla(String putanja) {
 		SOUcitajIzFajla.ucitajIzFajla(putanja, listaPitanja);
@@ -22,16 +31,16 @@ public class TestMaker {
 		SONapraviTest.napraviTest(brojPitanja, brojGrupa, listaPitanja,
 				textArea);
 	}
-	
-	public void upisiPredmet(String naziv){
+
+	public void upisiPredmet(String naziv) {
 		SOUcitajNazivPredmeta.upisiPredmet(naziv);
 	}
-	
-	public void citajPredmete(LinkedList<String> listaPredmeta){
+
+	public void citajPredmete() {
 		SOIspisiNazivePredmeta.prikaziPredmete(listaPredmeta);
 	}
-	
-	public void ubaciPitanje(String naziv, String pitanje){
+
+	public void ubaciPitanje(String naziv, String pitanje) {
 		SOUbaciNovoPitanje.upisiPitanje(naziv, pitanje);
 	}
 }

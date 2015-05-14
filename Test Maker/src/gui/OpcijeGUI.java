@@ -19,22 +19,6 @@ public class OpcijeGUI extends JFrame {
 	private JLabel lblDaLiZelite;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					OpcijeGUI frame = new OpcijeGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public OpcijeGUI() {
@@ -54,14 +38,20 @@ public class OpcijeGUI extends JFrame {
 		if (btnDodajPitanje == null) {
 			btnDodajPitanje = new JButton("Dodaj pitanje");
 			btnDodajPitanje.addActionListener(new BtnDodajPitanjeActionListener());
-			btnDodajPitanje.setBounds(93, 81, 103, 23);
+			btnDodajPitanje.setBounds(93, 81, 119, 23);
 		}
 		return btnDodajPitanje;
 	}
 	private JButton getBtnDodajPredmet() {
 		if (btnDodajPredmet == null) {
 			btnDodajPredmet = new JButton("Dodaj predmet");
-			btnDodajPredmet.setBounds(256, 81, 103, 23);
+			btnDodajPredmet.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+				new DodajPredmet().setVisible(true);
+				dispose();
+				}
+			});
+			btnDodajPredmet.setBounds(240, 81, 119, 23);
 		}
 		return btnDodajPredmet;
 	}
@@ -76,6 +66,7 @@ public class OpcijeGUI extends JFrame {
 		public void actionPerformed(final ActionEvent arg0) {
 			DodajPitanjeGUI frame=new DodajPitanjeGUI();
 			frame.setVisible(true);
+			dispose();
 		}
 	}
 }

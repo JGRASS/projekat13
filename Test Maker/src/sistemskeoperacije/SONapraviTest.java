@@ -20,7 +20,7 @@ public class SONapraviTest {
 				Random rd = new Random();
 				int a = rd.nextInt(pomocnaLista.size());
 
-				textArea.append(pomocnaLista.get(a).toString());
+				textArea.append(pomocnaLista.get(a).toString()+"\n");
 				pomocnaLista.remove(a);
 			}
 			

@@ -1,7 +1,6 @@
-Pojam diferencijalne jednacine?
+Diferencijalna jednacina?
+Nediferencijalna jednacina?
 Resenje diferencijalne jednacine?
-Opste resenje diferencijalne jednacine?
 Partikularno resenje diferencijalne jednacine?
+Opste resenje diferencijalne jednacine?
 Singularno resenje diferencijalne jednacine?
-Jednacina sa razdvojenim promeljivim?
-Homogena diferencijalna jednacina?

@@ -1,5 +1,5 @@
-Sta je potpuno stablo?
-Sta je kompletno stablo?
-Sta je balansirano stablo?
-Kakva je razlika izmedju binarnog i B stabla?
-Napisati funkciju za prefix obilaska?
+Binarno stablo?
+B stablo?
+Linearne strukture?
+Nelinearne strukture?
+Stek preko niza?

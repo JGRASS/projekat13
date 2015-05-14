@@ -16,6 +16,8 @@ import java.awt.event.InputEvent;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class GlavniProzor extends JFrame {
 
@@ -35,28 +37,18 @@ public class GlavniProzor extends JFrame {
 	private JButton btnNewButton_2;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GlavniProzor frame = new GlavniProzor();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public GlavniProzor() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				GUIKontroler.ugasiAplikaciju();
+			}
+		});
 		setTitle("Test Maker");
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		setJMenuBar(getMenuBar_1());
 		contentPane = new JPanel();
@@ -89,6 +81,12 @@ public class GlavniProzor extends JFrame {
 	private JMenuItem getMntmNoviTest() {
 		if (mntmNoviTest == null) {
 			mntmNoviTest = new JMenuItem("Novi test");
+			mntmNoviTest.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					NapraviTestGUI frame=new NapraviTestGUI();
+					frame.setVisible(true);
+				}
+			});
 			mntmNoviTest.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
 		}
 		return mntmNoviTest;
@@ -158,6 +156,11 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnNewButton_2() {
 		if (btnNewButton_2 == null) {
 			btnNewButton_2 = new JButton("Izlaz");
+			btnNewButton_2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKontroler.ugasiAplikaciju();
+				}
+			});
 			btnNewButton_2.setBounds(10, 143, 107, 23);
 		}
 		return btnNewButton_2;
