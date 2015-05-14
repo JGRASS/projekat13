@@ -6,6 +6,7 @@ import javax.swing.JTextArea;
 
 import sistemskeoperacije.SONapraviTest;
 import sistemskeoperacije.SOUcitajIzFajla;
+import sistemskeoperacije.SOUcitajNazivPredmeta;
 
 public class TestMaker {
 
@@ -18,5 +19,9 @@ public class TestMaker {
 	public void napraviTest(int brojPitanja, int brojGrupa, JTextArea textArea) {
 		SONapraviTest.napraviTest(brojPitanja, brojGrupa, listaPitanja,
 				textArea);
+	}
+	
+	public void upisiPredmet(String naziv){
+		SOUcitajNazivPredmeta.upisiPredmet(naziv);
 	}
 }

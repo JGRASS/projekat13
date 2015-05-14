@@ -150,6 +150,7 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnNewButton_1() {
 		if (btnNewButton_1 == null) {
 			btnNewButton_1 = new JButton("Dodaj");
+			btnNewButton_1.addActionListener(new BtnNewButton_1ActionListener());
 			btnNewButton_1.setBounds(10, 81, 107, 23);
 		}
 		return btnNewButton_1;
@@ -164,6 +165,12 @@ public class GlavniProzor extends JFrame {
 	private class BtnNewButtonActionListener implements ActionListener {
 		public void actionPerformed(final ActionEvent arg0) {
 			NapraviTestGUI frame=new NapraviTestGUI();
+			frame.setVisible(true);
+		}
+	}
+	private class BtnNewButton_1ActionListener implements ActionListener {
+		public void actionPerformed(final ActionEvent arg0) {
+			OpcijeGUI frame=new OpcijeGUI();
 			frame.setVisible(true);
 		}
 	}
