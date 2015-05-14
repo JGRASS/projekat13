@@ -14,7 +14,7 @@ public class GotovTestGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
-	private JTextArea textArea;
+	public static JTextArea textArea;
 
 	/**
 	 * Launch the application.

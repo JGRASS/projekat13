@@ -12,8 +12,15 @@ import javax.swing.JList;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.DefaultComboBoxModel;
+
+import sistemskeoperacije.SONapraviTest;
+import sistemskeoperacije.SOUcitajIzFajla;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.LinkedList;
+
+import logicka_kontrola.Pitanja;
 
 public class NapraviTestGUI extends JFrame {
 
@@ -21,13 +28,16 @@ public class NapraviTestGUI extends JFrame {
 	private JComboBox comboBox;
 	private JLabel lblPredmet;
 	private JList list;
-	private JTextField textField;
+	private JTextField brojGrupaTxt;
 	private JLabel lblPitanja;
 	private JLabel lblBrojGrupa;
-	private JTextField textField_1;
+	private JTextField brojPitanjaTxt;
 	private JLabel lblBrojPitanjaPo;
 	private JButton btnNewButton;
 	private JButton btnNewButton_1;
+	
+	//klase na logickom nivou
+	private LinkedList<Pitanja> pitanja;
 
 	/**
 	 * Launch the application.
@@ -38,6 +48,7 @@ public class NapraviTestGUI extends JFrame {
 				try {
 					NapraviTestGUI frame = new NapraviTestGUI();
 					frame.setVisible(true);
+					
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -61,13 +72,14 @@ public class NapraviTestGUI extends JFrame {
 		contentPane.add(getComboBox());
 		contentPane.add(getLblPredmet());
 		contentPane.add(getList());
-		contentPane.add(getTextField());
+		contentPane.add(getBrojGrupaTxt());
 		contentPane.add(getLblPitanja());
 		contentPane.add(getLblBrojGrupa());
-		contentPane.add(getTextField_1());
+		contentPane.add(getBrojPitanjaTxt());
 		contentPane.add(getLblBrojPitanjaPo());
 		contentPane.add(getBtnNewButton());
 		contentPane.add(getBtnNewButton_1());
+		pitanja=new LinkedList<Pitanja>();
 	}
 	private JComboBox getComboBox() {
 		if (comboBox == null) {
@@ -91,13 +103,13 @@ public class NapraviTestGUI extends JFrame {
 		}
 		return list;
 	}
-	private JTextField getTextField() {
-		if (textField == null) {
-			textField = new JTextField();
-			textField.setBounds(367, 109, 102, 20);
-			textField.setColumns(10);
+	private JTextField getBrojGrupaTxt() {
+		if (brojGrupaTxt == null) {
+			brojGrupaTxt = new JTextField();
+			brojGrupaTxt.setBounds(367, 109, 102, 20);
+			brojGrupaTxt.setColumns(10);
 		}
-		return textField;
+		return brojGrupaTxt;
 	}
 	private JLabel getLblPitanja() {
 		if (lblPitanja == null) {
@@ -113,13 +125,13 @@ public class NapraviTestGUI extends JFrame {
 		}
 		return lblBrojGrupa;
 	}
-	private JTextField getTextField_1() {
-		if (textField_1 == null) {
-			textField_1 = new JTextField();
-			textField_1.setBounds(367, 163, 102, 20);
-			textField_1.setColumns(10);
+	private JTextField getBrojPitanjaTxt() {
+		if (brojPitanjaTxt == null) {
+			brojPitanjaTxt = new JTextField();
+			brojPitanjaTxt.setBounds(367, 163, 102, 20);
+			brojPitanjaTxt.setColumns(10);
 		}
-		return textField_1;
+		return brojPitanjaTxt;
 	}
 	private JLabel getLblBrojPitanjaPo() {
 		if (lblBrojPitanjaPo == null) {
@@ -131,6 +143,7 @@ public class NapraviTestGUI extends JFrame {
 	private JButton getBtnNewButton() {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("Napravi test");
+			btnNewButton.addActionListener(new BtnNewButtonActionListener());
 			
 			btnNewButton.setBounds(367, 216, 102, 46);
 		}
@@ -139,9 +152,28 @@ public class NapraviTestGUI extends JFrame {
 	private JButton getBtnNewButton_1() {
 		if (btnNewButton_1 == null) {
 			btnNewButton_1 = new JButton("Odaberi predmet");
+			btnNewButton_1.addActionListener(new BtnNewButton_1ActionListener());
 			btnNewButton_1.setBounds(158, 36, 118, 23);
 		}
 		return btnNewButton_1;
 	}
 	
+	private class BtnNewButtonActionListener implements ActionListener {
+		public void actionPerformed(final ActionEvent arg0) {
+			GotovTestGUI frame=new GotovTestGUI();
+			frame.setVisible(true);
+			SONapraviTest.napraviTest(Integer.parseInt(brojPitanjaTxt.toString()), Integer.parseInt(brojGrupaTxt.toString()), pitanja, GotovTestGUI.textArea);
+		}
+	}
+	private class BtnNewButton_1ActionListener implements ActionListener {
+		public void actionPerformed(final ActionEvent arg0) {
+			SOUcitajIzFajla.ucitajIzFajla(comboBox.toString(), pitanja);
+			
+				list.setListData(pitanja.toArray());
+			
+			
+		}
+
+		
+	}
 }

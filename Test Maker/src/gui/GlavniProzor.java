@@ -14,6 +14,8 @@ import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
 import java.awt.event.InputEvent;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class GlavniProzor extends JFrame {
 
@@ -140,6 +142,7 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnNewButton() {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("Napravi test");
+			btnNewButton.addActionListener(new BtnNewButtonActionListener());
 			btnNewButton.setBounds(10, 29, 107, 23);
 		}
 		return btnNewButton;
@@ -157,5 +160,11 @@ public class GlavniProzor extends JFrame {
 			btnNewButton_2.setBounds(10, 143, 107, 23);
 		}
 		return btnNewButton_2;
+	}
+	private class BtnNewButtonActionListener implements ActionListener {
+		public void actionPerformed(final ActionEvent arg0) {
+			NapraviTestGUI frame=new NapraviTestGUI();
+			frame.setVisible(true);
+		}
 	}
 }
