@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.DefaultComboBoxModel;
 
+import sistemskeoperacije.SOIspisiNazivePredmeta;
 import sistemskeoperacije.SONapraviTest;
 import sistemskeoperacije.SOUcitajIzFajla;
 
@@ -21,6 +22,7 @@ import java.awt.event.ActionEvent;
 import java.util.LinkedList;
 
 import logicka_kontrola.Pitanja;
+import logicka_kontrola.TestMaker;
 
 public class NapraviTestGUI extends JFrame {
 
@@ -38,6 +40,7 @@ public class NapraviTestGUI extends JFrame {
 	
 	//klase na logickom nivou
 	private LinkedList<Pitanja> pitanja;
+	private LinkedList<String> listaPredmeta;
 
 	/**
 	 * Launch the application.
@@ -79,12 +82,16 @@ public class NapraviTestGUI extends JFrame {
 		contentPane.add(getLblBrojPitanjaPo());
 		contentPane.add(getBtnNewButton());
 		contentPane.add(getBtnNewButton_1());
+		
 		pitanja=new LinkedList<Pitanja>();
+		listaPredmeta=new LinkedList<String>();
+		
+		SOIspisiNazivePredmeta.prikaziPredmete(listaPredmeta);
+		comboBox.setSelectedItem(listaPredmeta);
 	}
 	private JComboBox getComboBox() {
 		if (comboBox == null) {
 			comboBox = new JComboBox();
-			comboBox.setModel(new DefaultComboBoxModel(new String[] {"Matematika", "SPA", "MTR"}));
 			comboBox.setBounds(10, 37, 118, 20);
 		}
 		return comboBox;

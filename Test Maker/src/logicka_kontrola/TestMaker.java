@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 import javax.swing.JTextArea;
 
+import sistemskeoperacije.SOIspisiNazivePredmeta;
 import sistemskeoperacije.SONapraviTest;
 import sistemskeoperacije.SOUcitajIzFajla;
 import sistemskeoperacije.SOUcitajNazivPredmeta;
@@ -23,5 +24,9 @@ public class TestMaker {
 	
 	public void upisiPredmet(String naziv){
 		SOUcitajNazivPredmeta.upisiPredmet(naziv);
+	}
+	
+	public void citajPredmete(LinkedList<String> listaPredmeta){
+		SOIspisiNazivePredmeta.prikaziPredmete(listaPredmeta);
 	}
 }
