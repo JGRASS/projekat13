@@ -12,6 +12,8 @@ import javax.swing.JList;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class NapraviTestGUI extends JFrame {
 
@@ -129,6 +131,7 @@ public class NapraviTestGUI extends JFrame {
 	private JButton getBtnNewButton() {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("Napravi test");
+			btnNewButton.addActionListener(new BtnNewButtonActionListener());
 			btnNewButton.setBounds(367, 216, 102, 46);
 		}
 		return btnNewButton;
@@ -139,5 +142,8 @@ public class NapraviTestGUI extends JFrame {
 			btnNewButton_1.setBounds(158, 36, 118, 23);
 		}
 		return btnNewButton_1;
+	}
+	private class BtnNewButtonActionListener implements ActionListener {
+		
 	}
 }
