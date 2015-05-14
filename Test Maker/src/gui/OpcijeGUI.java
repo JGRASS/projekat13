@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class OpcijeGUI extends JFrame {
 
@@ -51,6 +53,7 @@ public class OpcijeGUI extends JFrame {
 	private JButton getBtnDodajPitanje() {
 		if (btnDodajPitanje == null) {
 			btnDodajPitanje = new JButton("Dodaj pitanje");
+			btnDodajPitanje.addActionListener(new BtnDodajPitanjeActionListener());
 			btnDodajPitanje.setBounds(93, 81, 103, 23);
 		}
 		return btnDodajPitanje;
@@ -68,5 +71,11 @@ public class OpcijeGUI extends JFrame {
 			lblDaLiZelite.setBounds(98, 29, 261, 41);
 		}
 		return lblDaLiZelite;
+	}
+	private class BtnDodajPitanjeActionListener implements ActionListener {
+		public void actionPerformed(final ActionEvent arg0) {
+			DodajPitanjeGUI frame=new DodajPitanjeGUI();
+			frame.setVisible(true);
+		}
 	}
 }

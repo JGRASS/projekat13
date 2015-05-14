@@ -14,6 +14,7 @@ public class SOUcitajNazivPredmeta {
 			PrintWriter out=new PrintWriter(new BufferedWriter(new FileWriter("Predmet.txt")));
 			
 			out.println(naziv);
+			out.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

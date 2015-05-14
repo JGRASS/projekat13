@@ -6,6 +6,7 @@ import javax.swing.JTextArea;
 
 import sistemskeoperacije.SOIspisiNazivePredmeta;
 import sistemskeoperacije.SONapraviTest;
+import sistemskeoperacije.SOUbaciNovoPitanje;
 import sistemskeoperacije.SOUcitajIzFajla;
 import sistemskeoperacije.SOUcitajNazivPredmeta;
 
@@ -28,5 +29,9 @@ public class TestMaker {
 	
 	public void citajPredmete(LinkedList<String> listaPredmeta){
 		SOIspisiNazivePredmeta.prikaziPredmete(listaPredmeta);
+	}
+	
+	public void ubaciPitanje(String naziv, String pitanje){
+		SOUbaciNovoPitanje.upisiPitanje(naziv, pitanje);
 	}
 }
