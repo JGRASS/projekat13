@@ -131,7 +131,7 @@ public class NapraviTestGUI extends JFrame {
 	private JButton getBtnNewButton() {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("Napravi test");
-			btnNewButton.addActionListener(new BtnNewButtonActionListener());
+			
 			btnNewButton.setBounds(367, 216, 102, 46);
 		}
 		return btnNewButton;
@@ -143,7 +143,5 @@ public class NapraviTestGUI extends JFrame {
 		}
 		return btnNewButton_1;
 	}
-	private class BtnNewButtonActionListener implements ActionListener {
-		
-	}
+	
 }
