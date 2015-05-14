@@ -4,19 +4,25 @@ public class Pitanja {
 
 	private String pitanje;
 	private String odgovor;
+
 	public String getPitanje() {
 		return pitanje;
 	}
+
 	public void setPitanje(String pitanje) {
+		if (pitanje == null || pitanje.isEmpty())
+			throw new RuntimeException("Nije uneto pitanje");
 		this.pitanje = pitanje;
 	}
+
 	public String getOdgovor() {
 		return odgovor;
 	}
+
 	public void setOdgovor(String odgovor) {
 		this.odgovor = odgovor;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -38,11 +44,10 @@ public class Pitanja {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "Pitanja [pitanje=" + pitanje + ", odgovor=" + odgovor + "]";
 	}
-	
-	
-	
+
 }
